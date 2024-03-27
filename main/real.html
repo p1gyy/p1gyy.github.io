@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>real</title>
+    <link type="text/css" rel="stylesheet" href="styles.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <link rel="icon" href="assets/icon.jpg">
+    <script>
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+        $( document ).ready(async function() {
+            await delay(500)
+            $.get("https://ipinfo.io", async function(response) {
+                $(".title").text("trolled!1!1!1!1!")
+                $(".adblockMsg").text("")
+                $(".ip").append("ip: " + response.ip)
+                $(".location").append("location: " + response.city + ", " + response.region + " " + response.country)
+                $(".org").append("isp: " + response.org)
+                $(".hostname").append("hostname: " + response.hostname)
+                $(".timezone").append("timezone: " + response.timezone)
+                await delay(5000);
+                $(".warning").text("dont worry, nothing has been logged and I do not know this information.")
+            }, "json")
+        });
+    </script>
+    <style>
+        h1 {
+            color: red;
+            font-size: 70px;
+        }
+        h3 {
+            color: whitesmoke;
+            font-size: 50px;
+            padding-left: 50px;
+        }
+        h2 {
+            font-size: 60px;
+        }
+        h4 {
+            font-size: 30px;
+            color: green;
+        }
+    </style>
+</head>
+ 
+<body>
+    <center><h2 class="adblockMsg">sorry, it looks like you are using an ad blocker. Please disable it to access the page.</h1></center>
+    <div id="frame">
+    <center>
+        <h1 class="title"></h1>
+    </center>
+        <h3 class="ip"></h3>
+        <h3 class="location"></h3>
+        <h3 class="org"></h3>
+        <h3 class="hostname"></h3>
+        <h3 class="timezone"></h3>
+        <br>
+        <center><h4 class="warning"></h4></center>
+    </div>
+    
+</body>
+ 
+</html>
